@@ -12,7 +12,8 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.tarikmalek.cocharge"
     },
     "android": {
       "adaptiveIcon": {
@@ -22,6 +23,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c6e525f6-254b-4c6e-ab86-acc727507391"
+      }
+    },
+    "owner": "tarikmalek"
   }
 }

@@ -1,0 +1,35 @@
+{
+  "cli": {
+    "version": ">= 0.54.1"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "channel": "development",
+      "node": "18.18.2"
+    },
+    "development-simulator": {
+      "developmentClient": true,
+      "node": "18.18.2",
+      "distribution": "internal",
+      "ios": {
+        "simulator": true
+      }
+    },
+    "preview": {
+      "android": {
+        "buildType": "apk"
+      },
+      "channel": "preview",
+      "node": "18.18.2"
+    },
+    "production": {
+      "channel": "production",
+      "node": "18.18.2"
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
