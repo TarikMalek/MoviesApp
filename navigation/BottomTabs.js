@@ -12,8 +12,6 @@ export default ()=> {
         headerStyle: {
           backgroundColor:'#012326', 
         },
-        
-        
         headerTintColor: '#fff', 
         headerTitleStyle: {
           fontWeight: 'bold',
@@ -41,7 +39,7 @@ export default ()=> {
        component={FavouritesScreen}
        options={{
         tabBarIcon: ({ color, size, focused }) => (
-            <Entypo name="star" color={color} size={size} />
+            <Entypo name="star" color={color} size={focused ? 35 : 30}/>
         ),
         tabBarLabel: () => null, 
         }}
