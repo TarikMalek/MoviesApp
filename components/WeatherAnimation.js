@@ -8,7 +8,6 @@ const {width,height} = Dimensions.get('window');
 export default ()=>{
 
     return <>
-            <View style={styles.spinnerBackground} />
             <View style={styles.spinnerContainer}>
                 <LottieView 
                     source={require('../assets/animations/weather-animation.json')}
@@ -25,18 +24,14 @@ export default ()=>{
 
 const styles = StyleSheet.create({
 
-    spinnerBackground: {
-    //   width : width ,
-    
-      
-  },
+
   spinnerContainer:{
       justifyContent: 'center',
       alignItems:'center',
       alignContent:'center',
   },
   spinner :{
-      height:height*.1,
-      width :  width*.2,
+      height:height*.08,
+      width :  width*.16,
   },
   });

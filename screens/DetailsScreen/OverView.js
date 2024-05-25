@@ -9,13 +9,10 @@ import {
 import Button from '../../components/Button';
 import Animated,
 { 
-    FadeInRight,
     FadeInDown,
 } from 'react-native-reanimated';
-import { Dimensions } from 'react-native';
 import Row from './Row'
 
-const {width , height} = Dimensions.get('window')
 
 
 

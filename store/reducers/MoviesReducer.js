@@ -8,7 +8,8 @@ import {
     SET_CURRENT_PAGE,
     SET_LOCATION,
     SET_TOTAL_PAGES,
-    SET_WEATHER_DATA
+    SET_WEATHER_DATA,
+    SET_SHOW_BOTTOMSHEET
 } from '../actions/MoviesListAction';
 
 
@@ -65,7 +66,7 @@ const moviesReducer = (state= initialState,action) => {
             ...state,
             moviesList: [
                 ...state.moviesList,
-                ...action.payload
+                ...action.payload.filter(i => !state.moviesList.some(j => j.id === i.id))
             ]
         };
 

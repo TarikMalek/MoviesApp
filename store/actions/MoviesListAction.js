@@ -8,6 +8,16 @@ export const SET_LOADING = 'SET_LOADING';
 export const SET_FILTERS = 'SET_FILTERS';
 export const SET_LOCATION = 'SET_LOCATION';
 export const SET_WEATHER_DATA = 'SET_WEATHER_DATA';
+export const SET_SHOW_BOTTOMSHEET = 'SET_SHOW_BOTTOMSHEET';
+
+
+export const showBottomsheet = (payload) => {
+  return {
+    type: SET_SHOW_BOTTOMSHEET,
+    payload: payload
+  };
+};
+
 
 export const setWeatherData = (payload) => {
   return {

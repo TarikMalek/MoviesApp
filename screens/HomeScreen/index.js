@@ -1,14 +1,14 @@
 import React,{useEffect, useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View,ScrollView,Dimensions,FlatList } from 'react-native';
-import { fetchPopularMovies } from '../apis/moviesApi';
-import MovieListItem from '../components/MovieListItem';
-import AnimatedLoadingOverlay from '../components/AnimatedLoadingOverlay';
+import { fetchPopularMovies } from '../../apis/moviesApi';
+import MovieListItem from '../../components/MovieListItem';
+import AnimatedLoadingOverlay from '../../components/AnimatedLoadingOverlay';
 import { FlashList } from "@shopify/flash-list";
 import { useSelector,useDispatch } from 'react-redux';
 import * as Location from 'expo-location';
-import { fetchWeather } from '../apis/weatherApi';
-import WeatherAnimation from '../components/WeatherAnimation';
+import { fetchWeather } from '../../apis/weatherApi';
+import WeatherAnimation from '../../components/WeatherAnimation';
 import { 
     setLoading,
     setMoviesList,
@@ -16,7 +16,8 @@ import {
     setTotalPages,
     setLocation,
     setWeatherData
-} from '../store/actions/MoviesListAction';
+} from '../../store/actions/MoviesListAction';
+import  Header from './Header'
 const {width,height} = Dimensions.get('window');
 
 export default ()=> {
@@ -32,7 +33,7 @@ export default ()=> {
     } = useSelector(state => state.movies);
 
 
-  useEffect(()=>{
+    useEffect(()=>{
     (async () => {
       
         let { status } = await Location.requestForegroundPermissionsAsync();
@@ -96,8 +97,9 @@ export default ()=> {
         <FlatList
         contentContainerStyle={styles.container}
         data={moviesList}
-        renderItem={({ item }) => <MovieListItem
-            key={item.id.toString()}
+        renderItem={({ item,index }) => <MovieListItem
+            // key={index.toString()}
+            keyExtractor={item => item.id.toString()}
             data={item}
             favourites={favourites}
             />}
@@ -105,78 +107,11 @@ export default ()=> {
         onEndReached={()=>OnEndReached()}
         ListFooterComponent={<View style={{width : width, height :height*.1}}/>}
         ListHeaderComponent={
-        <View 
-        style={{
-            width : width,
-            //  height :height*.15,
-             borderWidth :1,
-             borderColor :'#DDDD',
-             borderRadius : 10,
-             justifyContent : 'center',
-           
-            }}
-        >
-            {(weather) &&
-            <View
-            style={{
-                flexDirection : 'row',
-                width : '95%',
-                justifyContent : 'space-between',
-                alignSelf : 'center',
-                padding : 20,
-                alignItems : 'center'
-            }}
-            >
-            <View
-            style={{
-                alignItems :'center'
-            }}
-            >
-            <WeatherAnimation />
-            
-            </View>
-                
-             
-             <View>
-                <Text
-                style={{
-                    color : 'white',
-                    fontSize : 14,
-                }}
-                >
-                    {weather?.location?.country}
-                
-                </Text>
-                <Text
-                style={{
-                    color : 'white',
-                    fontSize : 14,
-                }}
-                >
-                    {weather?.location?.name}
-                
-                </Text>
-                <Text
-                style={{
-                    color : 'white',
-                    fontSize : 16,
-                    fontWeight : 'bold',
-                    // marginTop : -10
-                }}
-                >
-                    {`feels like ${Math.round(weather?.current?.feelslike_c)} c'`}
-                
-                </Text>
-                
-            </View>
-           
-           
-               
-            </View>
-        
-                
-            }
-        </View>
+        <Header
+        weather={weather}
+        width={width}
+        height={height}
+        />
         }
         
         />

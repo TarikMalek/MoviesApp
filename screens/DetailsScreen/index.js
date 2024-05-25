@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState,useEffect } from 'react';
 import {
     View,
     Text,
@@ -16,15 +16,18 @@ import { Dimensions } from 'react-native';
 import { useSelector,useDispatch } from 'react-redux';
 import { 
     addToFavourites,
-    removeFromFavourites
+    removeFromFavourites,
+    showBottomsheet
 } from '../../store/actions/MoviesListAction';
 import Entypo from '@expo/vector-icons/Entypo';
 import OverView from './OverView';
+
 const {width , height} = Dimensions.get('window')
 
 
 export default ({ navigation ,route}) =>{
     const { favourites } = useSelector(state => state.movies)
+
     const dispatch = useDispatch();
     let {
         id,
@@ -36,20 +39,18 @@ export default ({ navigation ,route}) =>{
         vote_average
     } = route.params;
     let isMarked = favourites.some(i =>i == id)
-    console.log(favourites)
 
+    
     let imageUrl = backdrop_path ? 
-    `https://image.tmdb.org/t/p/w500/${backdrop_path}` : 
-    '';
+                    `https://image.tmdb.org/t/p/w500/${backdrop_path}` : 
+                    '';
     let posterUrl = poster_path ? 
-    `https://image.tmdb.org/t/p/w500/${poster_path}` : 
-    '';
+                    `https://image.tmdb.org/t/p/w500/${poster_path}` : 
+                    '';
 
     let releaseDate = new Date(release_date).getFullYear()
     return (
-    <ScrollView
-    // contentContainerStyle={{flex:1}}
-    >
+    <ScrollView>
       <Animated.View 
       style={styles.poster}
       entering={FadeInRight.duration(400).delay(600)}
@@ -61,20 +62,7 @@ export default ({ navigation ,route}) =>{
         />
           {isMarked &&
             <View
-            style={{
-                position : 'absolute',
-                top : 0,
-                left : 0,
-                alignItems : 'center',
-                justifyContent : 'center',
-                marginVertical : 10,
-                backgroundColor : 'rgba(0,0,0,0.6)',
-                padding : 10,
-                width : 50,
-                height : 50,
-                borderRadius : 25,
-
-            }}
+            style={styles.favouriteIcon}
             >
                 <Entypo name="star" size={30}  color='#FFD700' />
 
@@ -89,12 +77,7 @@ export default ({ navigation ,route}) =>{
       style={styles.details}
       >
         <Text
-        style={{
-            fontSize :20,
-            fontWeight : 'bold',
-            color : '#012326',
-            marginVertical : 10
-        }}
+        style={styles.title}
         >
             {title}
         </Text>
@@ -108,9 +91,13 @@ export default ({ navigation ,route}) =>{
             posterUrl  : posterUrl,
             isMarked: isMarked
          },
-         ()=> isMarked ? 
+         ()=> {
+            isMarked ? 
                dispatch(removeFromFavourites({id : id}))
-             : dispatch(addToFavourites({id : id}))
+             : dispatch(addToFavourites({id : id}));
+
+            
+            }
          )}
         
       
@@ -118,7 +105,8 @@ export default ({ navigation ,route}) =>{
      
 
       </View>
-   
+
+      
       </ScrollView>
     );
   }
@@ -127,6 +115,12 @@ const styles = StyleSheet.create({
     container:{
         flex:1,
      
+    },
+    title : {
+        fontSize :20,
+        fontWeight : 'bold',
+        color : '#012326',
+        marginVertical : 10
     },
     poster : {
         width: width,
@@ -143,5 +137,18 @@ const styles = StyleSheet.create({
         borderTopRightRadius : 20,
         padding : 10,
         marginVertical : 20
+    },
+    favouriteIcon : {
+        position : 'absolute',
+        top : 0,
+        left : 0,
+        alignItems : 'center',
+        justifyContent : 'center',
+        marginVertical : 10,
+        backgroundColor : 'rgba(0,0,0,0.6)',
+        padding : 10,
+        width : 50,
+        height : 50,
+        borderRadius : 25,
     }
     })
