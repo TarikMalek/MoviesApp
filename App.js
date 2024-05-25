@@ -1,32 +1,45 @@
+import 'react-native-gesture-handler';
+
 import React,{useEffect, useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View,ScrollView } from 'react-native';
-import { fetchPopularMovies } from './apis/moviesApi';
+import { StyleSheet,Dimensions } from 'react-native';
+
+import { NavigationContainer, DefaultTheme  } from '@react-navigation/native';
+
+import Navigator from './navigation/RootNavigator';
+
+import { Provider } from 'react-redux';
+
+import { store } from './store/store';
+
 export default function App() {
-  const [movies, setMovies] = useState([])
-  useEffect(()=>{
-    fetchPopularMovies()
-    .then(res=>{
-      console.log(JSON.stringify(res, null, 2))
-      setMovies(res?.results ?? [])
-    })
-    .catch(err=>console.log('error',err))
-  },[])
-  console.log('movies',movies)
+
+  const MyTheme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      background: '#012326'
+    },
+  };
+
   return (
-   <ScrollView
-   contentContainerStyle={styles.container}
-   >
-    {movies.map(movie=><Text>{movie?.original_title}</Text>)}
-   </ScrollView>
+    <NavigationContainer theme={MyTheme}>
+      <Provider store={store}> 
+    <StatusBar  style="dark" />
+
+    <Navigator />
+      
+    </Provider>
+   </NavigationContainer>
+
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#DDDD',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor :'#012326',
+  
   },
+  
+
 });

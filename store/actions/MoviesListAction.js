@@ -1,0 +1,76 @@
+export const SET_MOVIES_LIST = 'SET_MOVIES_LIST';
+export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+export const SET_TOTAL_PAGES = 'SET_TOTAL_PAGES';
+
+export const ADD_TO_FAVOURITES = 'ADD_TO_FAVOURITES';
+export const REMOVE_FROM_FAVOURITES = 'REMOVE_FROM_FAVOURITES'; 
+export const SET_LOADING = 'SET_LOADING';
+export const SET_FILTERS = 'SET_FILTERS';
+export const SET_LOCATION = 'SET_LOCATION';
+export const SET_WEATHER_DATA = 'SET_WEATHER_DATA';
+
+export const setWeatherData = (payload) => {
+  return {
+    type: SET_WEATHER_DATA,
+    payload: payload
+  };
+};
+
+export const setLocation = (payload) => {
+  return {
+    type: SET_LOCATION,
+    payload: payload
+  };
+};
+
+export const setLoading = (payload) => {
+    return {
+      type: SET_LOADING,
+      payload: payload
+    };
+  };
+
+  export const setFilters = (payload) => {
+    return {
+      type: SET_FILTERS,
+      payload: payload
+    };
+  };
+
+  
+  export const setTotalPages = (payload) => {
+    return {
+      type: SET_TOTAL_PAGES,
+      payload: payload
+    };
+  };
+  export const setCurrentPage = (payload) => {
+    return {
+      type: SET_CURRENT_PAGE,
+      payload: payload
+    };
+  };
+  
+export const setMoviesList = (payload) => {
+    return {
+      type: SET_MOVIES_LIST,
+      payload: payload
+    };
+  };
+
+
+  export const addToFavourites = (payload) => {
+    return {
+      type: ADD_TO_FAVOURITES,
+      payload: payload
+    };
+  };
+
+
+  export const removeFromFavourites = (payload) => {
+    return {
+      type: REMOVE_FROM_FAVOURITES,
+      payload: payload
+    };
+  };
+
