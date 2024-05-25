@@ -6,7 +6,7 @@ import {
     Image,
     ScrollView,
 } from 'react-native';
-import Button from '../components/Button';
+import Button from '../../components/Button';
 import Animated,
 { 
     FadeInRight,
@@ -17,132 +17,11 @@ import { useSelector,useDispatch } from 'react-redux';
 import { 
     addToFavourites,
     removeFromFavourites
-} from '../store/actions/MoviesListAction';
+} from '../../store/actions/MoviesListAction';
 import Entypo from '@expo/vector-icons/Entypo';
-
+import OverView from './OverView';
 const {width , height} = Dimensions.get('window')
-const Row  = (data)=>{
 
-    return (
-        <View
-        style={{
-            flexDirection : 'row',
-            justifyContent : 'space-between',
-            padding : 5
-        }}
-        >
-            <Text
-            style={{
-                fontWeight : 'bold',
-            }}
-            >
-                {data.label}
-            </Text>
-
-            <Text
-            style={{
-                fontWeight : 'bold',
-                color : '#012326'
-            }}
-            >
-                {data.value}
-            </Text>
-
-        </View>
-    )
-};
-
-const OverView = (data,onPress) =>{
-    return (
-       
-            <Animated.View 
-            style={{
-            // flex:1,
-            
-            padding : 10,
-            borderWidth : 1,
-            borderColor : '#012326',
-            borderRadius : 10,
-            marginVertical : 10,
-          
-        }}
-        entering={FadeInDown.duration(400).delay(800)}
-        >
-            <View
-            style={{
-                flex:1,
-                flexDirection : 'row'
-            }}
-            >
-
-            
-             <View
-            style={{
-                width : '40%',
-                marginTop:5,
-                height : 200,
-                backgroundColor : '#012326',
-                borderRadius : 20,
-                borderWidth :1 ,
-                borderColor : '#012326',
-                alignItems : 'center',
-                justifyContent : 'center',
-               
-            }}
-            >
-                <Image
-                style={{
-                    width : '100%',
-                   height : '100%',
-                    resizeMode : 'cover',
-                    borderRadius : 20
-                }}
-                source={{ uri: data.posterUrl}}
-                />
-             
-
-            </View>
-
-            <View
-            style={{
-                flex:1,
-                width : '60%',
-                padding : 10
-            }}
-            >   
-            <Text
-            style={{
-                textAlign :'justify',
-                fontSize : 16,
-                marginBottom :10,
-            }}
-            >
-                {data.overview}
-
-            </Text>
-
-            {Row({label:'Release Date',value:data.releaseDate})}
-            {Row({label:'Rating',value:data.vote_average.toFixed(2)})}
-
-            
-            </View>
-            </View>
-
-            <Button 
-            label={data.isMarked ?'Remove From Favourites' : 'Add to Favourites'}
-            onPress={onPress}
-            containerStyle={{
-                backgroundColor : data.isMarked ? 'red' : '#012326',
-            }}
-             />
-       
-       
-            
-            </Animated.View >
-           
-        
-    )
-}
 
 export default ({ navigation ,route}) =>{
     const { favourites } = useSelector(state => state.movies)
