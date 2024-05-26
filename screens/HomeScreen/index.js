@@ -2,6 +2,7 @@ import React,{useEffect, useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View,ScrollView,Dimensions,FlatList } from 'react-native';
 import { fetchPopularMovies } from '../../apis/moviesApi';
+
 import MovieListItem from '../../components/MovieListItem';
 import AnimatedLoadingOverlay from '../../components/AnimatedLoadingOverlay';
 import { FlashList } from "@shopify/flash-list";
@@ -48,8 +49,8 @@ export default ()=> {
     dispatch(setLoading({loading : true})) 
     fetchPopularMovies(currentPage)
     .then(res=>{
-    
-      dispatch(setMoviesList(res?.results))
+      console.log(res)
+      dispatch(setMoviesList({movies:res?.results,reset: false}))
       dispatch(setTotalPages({totalPages : res.total_pages}))
       setTimeout(() => {
         dispatch(setLoading({loading : false}))  
@@ -70,7 +71,7 @@ export default ()=> {
         dispatch(setLoading({loading : true}))  
         fetchPopularMovies(currentPage) 
         .then(res=>{
-          dispatch(setMoviesList(res?.results))
+          dispatch(setMoviesList({movies:res?.results,reset: false}))
         setTimeout(() => {
             dispatch(setLoading({loading : false}))  
         }, 1000);
@@ -113,7 +114,19 @@ export default ()=> {
         height={height}
         />
         }
-        
+        ListEmptyComponent={
+          <View
+          style={{
+              width : '100%',
+              height : '100%',
+              justifyContent : 'center',
+              alignItems : 'center',
+          }}
+          >
+              <Text style={{color : 'white',fontSize : 20}}>No Movies</Text>
+
+          </View>
+      }
         />
         {loading && <AnimatedLoadingOverlay />}
         </>

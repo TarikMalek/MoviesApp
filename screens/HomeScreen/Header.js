@@ -1,9 +1,8 @@
-import React,{useEffect, useState} from 'react';
+import React,{useEffect, useState,useCallback} from 'react';
 import { StyleSheet, Text, View,ScrollView,Dimensions,FlatList } from 'react-native';
 
 import WeatherAnimation from '../../components/WeatherAnimation';
-import TextInput from '../../components/TextInput';
-
+import SearchField from '../../components/SearchField';
 
 
 export default ({
@@ -11,7 +10,6 @@ export default ({
     width,
     height
 })=>{
-    const [value,setValue]= useState('')
     const styles = StyleSheet.create({
         container : {
             width : width,
@@ -26,7 +24,7 @@ export default ({
     return (
         <View>
 
-<View 
+        <View 
         style={styles.container}
         >
            
@@ -89,15 +87,10 @@ export default ({
         
                 
             }
+            <SearchField />
            
         </View>
 
-        <TextInput 
-        value={value}
-        onChange={val=>setValue(val)}
-        placeholder={'Search Movies...'}
-
-        />
        
        
         </View>

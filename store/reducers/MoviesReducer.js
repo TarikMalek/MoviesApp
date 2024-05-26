@@ -64,9 +64,11 @@ const moviesReducer = (state= initialState,action) => {
       case SET_MOVIES_LIST:
         return {
             ...state,
-            moviesList: [
+            moviesList: action.payload.reset ? 
+            action.payload.movies :
+            [
                 ...state.moviesList,
-                ...action.payload.filter(i => !state.moviesList.some(j => j.id === i.id))
+                ...action.payload.movies.filter(i => !state.moviesList.some(j => j.id === i.id))
             ]
         };
 
