@@ -1,7 +1,7 @@
 export const SET_MOVIES_LIST = 'SET_MOVIES_LIST';
 export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 export const SET_TOTAL_PAGES = 'SET_TOTAL_PAGES';
-
+export const SET_GENRES = 'SET_GENRES';
 export const ADD_TO_FAVOURITES = 'ADD_TO_FAVOURITES';
 export const REMOVE_FROM_FAVOURITES = 'REMOVE_FROM_FAVOURITES'; 
 export const SET_LOADING = 'SET_LOADING';
@@ -10,6 +10,13 @@ export const SET_LOCATION = 'SET_LOCATION';
 export const SET_WEATHER_DATA = 'SET_WEATHER_DATA';
 export const SET_SHOW_BOTTOMSHEET = 'SET_SHOW_BOTTOMSHEET';
 
+
+export const setGenres = (payload) => {
+  return {
+    type: SET_GENRES,
+    payload: payload
+  };
+};
 
 export const showBottomsheet = (payload) => {
   return {

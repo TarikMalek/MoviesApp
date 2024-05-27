@@ -7,6 +7,7 @@ import {
     ScrollView,
 } from 'react-native';
 import Button from '../../components/Button';
+import { getMovieDetails } from '../../apis/getMovieDetails';
 import Animated,
 { 
     FadeInRight,
@@ -17,6 +18,7 @@ import { useSelector,useDispatch } from 'react-redux';
 import { 
     addToFavourites,
     removeFromFavourites,
+    setLoading,
     showBottomsheet
 } from '../../store/actions/MoviesListAction';
 import Entypo from '@expo/vector-icons/Entypo';
@@ -27,8 +29,6 @@ const {width , height} = Dimensions.get('window')
 
 export default ({ navigation ,route}) =>{
     const { favourites } = useSelector(state => state.movies)
-
-    const dispatch = useDispatch();
     let {
         id,
         backdrop_path,
@@ -38,9 +38,10 @@ export default ({ navigation ,route}) =>{
         overview,
         vote_average
     } = route.params;
-    let isMarked = favourites.some(i =>i == id)
 
-    
+    const [movie,setMovie]= useState(null);
+    let isMarked = favourites.some(i =>i == id);
+    const dispatch = useDispatch();
     let imageUrl = backdrop_path ? 
                     `https://image.tmdb.org/t/p/w500/${backdrop_path}` : 
                     '';
@@ -49,6 +50,24 @@ export default ({ navigation ,route}) =>{
                     '';
 
     let releaseDate = new Date(release_date).getFullYear()
+
+    useEffect(()=>{
+        dispatch(setLoading({loading : true}));
+        getMovieDetails(id)
+        .then(res=>{
+           setMovie(res);
+           setTimeout(() => {
+            dispatch(setLoading({loading : false}))  
+        }, 1000); 
+        })
+        .catch(err => console.log('movie details error' , err))
+    },[])
+
+    
+    
+
+    
+    
     return (
     <ScrollView>
       <Animated.View 

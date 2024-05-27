@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View,ScrollView,Dimensions,FlatList } from 'react-native';
 import { fetchPopularMovies } from '../../apis/moviesApi';
-
+import { getMovieGenres } from '../../apis/getMovieGenres';
 import MovieListItem from '../../components/MovieListItem';
 import AnimatedLoadingOverlay from '../../components/AnimatedLoadingOverlay';
 import { FlashList } from "@shopify/flash-list";
@@ -16,7 +16,8 @@ import {
     setCurrentPage,
     setTotalPages,
     setLocation,
-    setWeatherData
+    setWeatherData,
+    setGenres
 } from '../../store/actions/MoviesListAction';
 import  Header from './Header'
 const {width,height} = Dimensions.get('window');
@@ -30,9 +31,9 @@ export default ()=> {
     currentPage,
     totalPages,
     location,
-    weather
+    weather,
+    genres
     } = useSelector(state => state.movies);
-
 
     useEffect(()=>{
     (async () => {
@@ -56,7 +57,14 @@ export default ()=> {
         dispatch(setLoading({loading : false}))  
     }, 1000); 
     })
-    .catch(err=>console.log('error',err))
+    .catch(err=>console.log('moviesList error',err));
+
+    getMovieGenres()
+    .then(res=>{
+      console.log(res)
+      dispatch(setGenres(res?.genres))
+    })
+    .catch(err=>console.log('genres error',err));
   },[])
 
   const OnEndReached = ()=>{
@@ -128,7 +136,6 @@ export default ()=> {
           </View>
       }
         />
-        {loading && <AnimatedLoadingOverlay />}
         </>
     )
 }

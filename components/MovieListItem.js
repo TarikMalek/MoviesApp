@@ -48,13 +48,13 @@ export default ({
                 marginVertical : 10,
                 backgroundColor : 'rgba(0,0,0,0.6)',
                 padding : 10,
-                width : 50,
-                height : 50,
-                borderRadius : 25,
+                width : 40,
+                height : 40,
+                borderRadius : 20,
 
             }}
             >
-                <Entypo name="star" size={30}  color='#FFD700' />
+                <Entypo name="star" size={20}  color='#FFD700' />
 
             </View>
 

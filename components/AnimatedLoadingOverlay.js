@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     overlay:{
         position: 'absolute',
         width : width ,
-        height : height*.9,
+        height : height,
         
         backgroundColor: 'rgba(0,0,0,0.5)',
         justifyContent: 'center',

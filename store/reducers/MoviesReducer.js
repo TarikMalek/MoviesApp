@@ -9,12 +9,14 @@ import {
     SET_LOCATION,
     SET_TOTAL_PAGES,
     SET_WEATHER_DATA,
-    SET_SHOW_BOTTOMSHEET
+    SET_SHOW_BOTTOMSHEET,
+    SET_GENRES
 } from '../actions/MoviesListAction';
 
 
 const initialState = {
     loading: false,
+    genres : [],
     moviesList: [],
     filters: {
         genre: '',
@@ -25,12 +27,19 @@ const initialState = {
     currentPage : 1,
     totalPages : 0,
     location : null,
-    weather : null
+    weather : null,
+    showBottomSheet : false,
 };
 
 
 const moviesReducer = (state= initialState,action) => {
     switch (action.type) {
+
+    case SET_GENRES:
+        return {
+            ...state,
+            genres: action.payload
+        };
         
     case SET_WEATHER_DATA:
         return {

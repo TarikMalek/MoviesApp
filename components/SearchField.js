@@ -11,7 +11,8 @@ import { searchMovies } from '../apis/searchMovies';
 import { 
     setLoading,
     setTotalPages,
-    setMoviesList
+    setMoviesList,
+    
 } from '../store/actions/MoviesListAction';
 
 export default ({})=>{
@@ -33,6 +34,8 @@ export default ({})=>{
         .then(res=>{
             dispatch(setMoviesList({movies:res?.results,reset: true}))
             dispatch(setTotalPages({totalPages : res.total_pages}))
+            console.log(res.total_pages)
+
             setTimeout(() => {
               dispatch(setLoading({loading : false}))  
           }, 1000); 
