@@ -114,6 +114,7 @@ export default ()=> {
     return (
         <>
         <FlatList
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.container}
         data={moviesList}
         renderItem={({ item,index }) => <MovieListItem
