@@ -30,7 +30,7 @@ export default (data,onPress) =>{
             marginVertical : 10,
           
         }}
-        entering={FadeInDown.duration(400).delay(800)}
+        entering={FadeInDown.duration(400).delay(1200)}
         >
             <View
             style={{

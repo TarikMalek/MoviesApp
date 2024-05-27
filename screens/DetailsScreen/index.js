@@ -58,7 +58,7 @@ export default ({ navigation ,route}) =>{
            setMovie(res);
            setTimeout(() => {
             dispatch(setLoading({loading : false}))  
-        }, 1000); 
+        }, 800); 
         })
         .catch(err => console.log('movie details error' , err))
     },[])
@@ -72,7 +72,7 @@ export default ({ navigation ,route}) =>{
     <ScrollView>
       <Animated.View 
       style={styles.poster}
-      entering={FadeInRight.duration(400).delay(600)}
+      entering={FadeInRight.duration(400).delay(1100)}
       >
         <Image
           source={{ uri: imageUrl}}
