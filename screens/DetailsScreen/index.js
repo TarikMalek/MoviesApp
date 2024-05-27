@@ -65,7 +65,7 @@ export default ({ navigation ,route}) =>{
 
     
     
-
+    console.log(movie)
     
     
     return (
@@ -102,8 +102,9 @@ export default ({ navigation ,route}) =>{
         </Text>
       
         
-        { OverView(
-            {
+        { 
+        OverView(
+         {
             overview : overview ,
             releaseDate : releaseDate,
             vote_average : vote_average,
@@ -112,16 +113,12 @@ export default ({ navigation ,route}) =>{
          },
          ()=> {
             isMarked ? 
-               dispatch(removeFromFavourites({id : id}))
-             : dispatch(addToFavourites({id : id}));
-
-            
+            dispatch(removeFromFavourites({id : id}))
+            : dispatch(addToFavourites({id : id}));
             }
-         )}
+         )
+         }
         
-      
-       
-     
 
       </View>
 
@@ -150,6 +147,7 @@ const styles = StyleSheet.create({
     details : {
         flex:1,
         width : '100%',
+        
         backgroundColor : 'white',
         marginTop : -20,
         borderTopLeftRadius : 20,

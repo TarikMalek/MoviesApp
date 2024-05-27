@@ -28,6 +28,7 @@ export default (data,onPress) =>{
             borderColor : '#012326',
             borderRadius : 10,
             marginVertical : 10,
+            
           
         }}
         entering={FadeInDown.duration(400).delay(1200)}
@@ -51,6 +52,10 @@ export default (data,onPress) =>{
                 borderColor : '#012326',
                 alignItems : 'center',
                 justifyContent : 'center',
+                shadowColor: '#012326',
+                shadowOffset: {width: -2, height: 4},
+                shadowOpacity: 0.2,
+                shadowRadius: 3,
                
             }}
             >
@@ -59,7 +64,8 @@ export default (data,onPress) =>{
                     width : '100%',
                    height : '100%',
                     resizeMode : 'cover',
-                    borderRadius : 20
+                    borderRadius : 20,
+                   
                 }}
                 source={{ uri: data.posterUrl}}
                 />

@@ -2,6 +2,7 @@ import React,{useEffect, useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View,ScrollView,Dimensions,FlatList } from 'react-native';
 import { fetchPopularMovies } from '../../apis/moviesApi';
+import { searchMovies } from '../../apis/searchMovies';
 import { getMovieGenres } from '../../apis/getMovieGenres';
 import MovieListItem from '../../components/MovieListItem';
 import AnimatedLoadingOverlay from '../../components/AnimatedLoadingOverlay';
@@ -32,8 +33,11 @@ export default ()=> {
     totalPages,
     location,
     weather,
-    genres
+    genres,
+    filters
     } = useSelector(state => state.movies);
+    let searchQuery = filters?.search ? filters?.search : false;
+    let moviesApi = searchQuery ? searchMovies : fetchPopularMovies;
 
     useEffect(()=>{
     (async () => {
@@ -77,7 +81,13 @@ export default ()=> {
     if(currentPage < totalPages){
         console.log('fetching movies')
         dispatch(setLoading({loading : true}))  
-        fetchPopularMovies(currentPage) 
+        moviesApi(
+          searchQuery ? 
+          {
+            currentPage : currentPage,
+            searchQuery : searchQuery
+          } 
+          : currentPage) 
         .then(res=>{
           dispatch(setMoviesList({movies:res?.results,reset: false}))
         setTimeout(() => {

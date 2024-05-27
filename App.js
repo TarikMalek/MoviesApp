@@ -12,18 +12,21 @@ import Navigator from './navigation/RootNavigator';
 import { Provider, connect } from 'react-redux';
 import { store } from './store/store';
 import AnimatedLoadingOverlay from './components/AnimatedLoadingOverlay';
-
-const Root = ({ loading }) => {
+import BottomSheetModal from './components/BottomSheetModal'
+const Root = ({ loading ,showBottomSheet}) => {
   return( 
   <>
     {loading && <AnimatedLoadingOverlay />}
+    
     <Navigator />
+    {/* {showBottomSheet && <BottomSheetModal />} */}
   </>
   );
 };
 
 const mapStateToProps = (state) => ({
   loading: state.movies.loading,
+  showBottomSheet : state.movies.showBottomSheet
 });
 
 const ConnectedRoot = connect(mapStateToProps)(Root);

@@ -106,6 +106,7 @@ const styles= StyleSheet.create({
         marginVertical : 10,
         borderTopLeftRadius : 20,
         borderTopRightRadius : 20,
+       
         
     },
     poster : {

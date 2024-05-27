@@ -28,7 +28,7 @@ const initialState = {
     totalPages : 0,
     location : null,
     weather : null,
-    showBottomSheet : false,
+    showBottomSheet : true,
 };
 
 
@@ -84,10 +84,10 @@ const moviesReducer = (state= initialState,action) => {
       case SET_FILTERS:
         return {
             ...state,
-            filters: [
+            filters:{
                 ...state.filters,
                 ...action.payload
-            ]
+            }
         };
 
       case ADD_TO_FAVOURITES:

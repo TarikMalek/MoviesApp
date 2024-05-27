@@ -12,7 +12,7 @@ import {
     setLoading,
     setTotalPages,
     setMoviesList,
-    
+    setFilters
 } from '../store/actions/MoviesListAction';
 
 export default ({})=>{
@@ -50,6 +50,7 @@ export default ({})=>{
         setValue(val);
 
         if (val.length %3 == 0){
+            dispatch(setFilters({search : val}))
             search()
         };
     };
