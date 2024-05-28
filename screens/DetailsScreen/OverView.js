@@ -35,7 +35,7 @@ export default (data,onPress) =>{
         <>
          <Text
         style={{
-            fontSize :20,
+            fontSize :16,
             fontWeight : 'bold',
             color : '#012326',
         }}

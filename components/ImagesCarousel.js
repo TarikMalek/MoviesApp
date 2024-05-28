@@ -12,7 +12,10 @@ export default ({ images }) => {
                 <Image source={require('../assets/person.png')} style={styles.image} />
      return  (   
      <View style={styles.itemContainer}>
-        {image}
+        <View style={styles.imageContainer}>
+         {image}
+        </View>
+      
         <View
         style={{
             width : '75%',
@@ -49,13 +52,23 @@ const styles = StyleSheet.create({
     alignItems : 'center',
     justifyContent : 'center',
   },
-  image: {
+  imageContainer : {
     width: 100,
     height: 100,
     borderRadius : 50,
     marginHorizontal: 5,
     borderRadius: 10,
     marginVertical :5,
+    shadowColor: '#012326',
+    shadowOffset: {width: -2, height: 4},
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+  image: {
+    width : '100%',
+    height : '100%',
+    borderRadius : 50,
+    
   },
   name : {
     fontSize :12,

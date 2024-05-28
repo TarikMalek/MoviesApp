@@ -8,16 +8,17 @@ import SearchField from '../../components/SearchField';
 export default ({
     weather,
     width,
-    height
+    
 })=>{
     const styles = StyleSheet.create({
         container : {
+            height : 150,
             width : width,
              borderWidth :1,
              borderColor :'#DDDD',
              borderRadius : 10,
              justifyContent : 'center',
-           
+            backgroundColor : '#012326',
             },
     });
 
