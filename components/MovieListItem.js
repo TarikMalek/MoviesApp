@@ -84,7 +84,7 @@ export default ({
                 <Text
                 style={{
                     color : 'white',
-                    fontSize : 20,
+                    fontSize : 16,
                     fontWeight : 'bold'
                 }}
                 >

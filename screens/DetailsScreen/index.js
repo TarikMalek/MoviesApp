@@ -5,6 +5,7 @@ import {
     StyleSheet,
     Image,
     ScrollView,
+    TouchableOpacity
 } from 'react-native';
 import Button from '../../components/Button';
 import { getMovieDetails } from '../../apis/getMovieDetails';
@@ -21,10 +22,9 @@ import {
     setLoading,
     showBottomsheet
 } from '../../store/actions/MoviesListAction';
-import Entypo from '@expo/vector-icons/Entypo';
+import {Entypo,AntDesign} from '@expo/vector-icons';
 import OverView from './OverView';
 import YoutubeViewer from '../../components/YoutubeViewer';
-import ImagesCarousel from '../../components/ImagesCarousel';
 
 const {width , height} = Dimensions.get('window')
 
@@ -44,6 +44,8 @@ export default ({ navigation ,route}) =>{
     const [movie,setMovie]= useState(null);
     const [trailer,setTrailer] = useState(null);
     const [crew,setCrew] = useState([]);
+    const [playVideo,setPlayVideo] =useState(false);
+
     let isMarked = favourites.some(i =>i == id);
     const dispatch = useDispatch();
     let imageUrl = backdrop_path ? 
@@ -93,21 +95,40 @@ export default ({ navigation ,route}) =>{
       style={styles.poster}
       entering={FadeInRight.duration(400).delay(1100)}
       >
-        {trailer ?
-        <View style={styles.poster}>
+        {(trailer && playVideo) ? 
+            <View style={styles.poster}>
+            <YoutubeViewer 
+            videoId={trailer.key}
+            />
+             <TouchableOpacity
+            style={styles.closeVideoIcon}
+            onPress={(()=>setPlayVideo(false))}
+            >
+                <AntDesign name="close" size={20} color="white" />
+           </TouchableOpacity>
+            </View>
+            :
+            <View>
+            <Image
+              source={{ uri: imageUrl}}
+              style={styles.poster}
+             
+            />
+            {trailer &&
+            <TouchableOpacity
+            style={styles.playVideoIcon}
+            onPress={(()=>setPlayVideo(true))}
+            >
+               <Entypo name="controller-play" size={50}  color='#012326' />
 
-     
-        <YoutubeViewer
-        videoId={trailer?.key}
-        />
-           </View>
-        :
-        <Image
-          source={{ uri: imageUrl}}
-          style={styles.poster}
+           </TouchableOpacity>
+            }
+            
+        
+            </View>
+         }
+        
          
-        />
-        }
         
           {isMarked &&
             <View
@@ -188,7 +209,7 @@ const styles = StyleSheet.create({
         width : '100%',
         
         backgroundColor : 'white',
-        marginTop : -20,
+        marginTop : -25,
         borderTopLeftRadius : 20,
         borderTopRightRadius : 20,
         padding : 10,
@@ -206,5 +227,32 @@ const styles = StyleSheet.create({
         width : 50,
         height : 50,
         borderRadius : 25,
+    },
+    closeVideoIcon : {
+        position : 'absolute',
+        top : 0,
+        right : 0,
+        alignItems : 'center',
+        justifyContent : 'center',
+        marginVertical : 10,
+        backgroundColor : 'rgba(255, 0, 0, 0.6)',
+        padding : 10,
+        width : 40,
+        height : 40,
+        borderRadius : 20,
+    },
+    playVideoIcon : {
+        position : 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: [{ translateX: -35 }, { translateY: -35 }],
+        alignItems : 'center',
+        justifyContent : 'center',
+        marginVertical : 10,
+        backgroundColor : 'rgba(255,255,255,0.6)',
+        padding : 10,
+        width : 70,
+        height : 70,
+        borderRadius : 35,
     }
     })
