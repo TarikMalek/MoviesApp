@@ -17,6 +17,7 @@ import {
   setGenres
 } from '../../store/actions/MoviesListAction';
 import Header from './Header';
+import FloatingActionButton from '../../components/FAB';
 
 const { width, height } = Dimensions.get('window');
 
@@ -40,6 +41,8 @@ export default () => {
   const headerTranslateY = useRef(new Animated.Value(0)).current;
   const currentOffset = useRef(0);
   const direction = useRef('up');
+  const flatListRef = useRef(null);
+
   useEffect(() => {
     scrollY.addListener(({ value }) => {
       const offsetY = value;
@@ -147,6 +150,8 @@ export default () => {
         <Header weather={weather} width={width} height={height} />
       </Animated.View>
       <Animated.FlatList
+        ref={flatListRef}
+
         onScroll={Animated.event(
           [{ nativeEvent: { contentOffset: { y: scrollY } } }],
           { useNativeDriver: false }
@@ -170,6 +175,13 @@ export default () => {
           </View>
         }
       />
+      
+      <FloatingActionButton 
+      onPress={() => 
+      flatListRef.current.scrollToOffset({ offset: 0, animated: true })
+      } 
+      />
+
     </>
   );
 };
