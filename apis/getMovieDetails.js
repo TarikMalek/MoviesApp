@@ -12,7 +12,7 @@ export const getMovieDetails = async (id) => {
        
       };
       
-      let response = fetch(`https://api.themoviedb.org/3/movie/${id}?append_to_response=videos%2Cimages`, options)
+      let response = fetch(`https://api.themoviedb.org/3/movie/${id}?append_to_response=videos,images,credits`, options)
         .then(response => response.json())
         .catch(err => console.error(err));
 

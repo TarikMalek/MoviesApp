@@ -12,7 +12,7 @@ import Animated,
     FadeInDown,
 } from 'react-native-reanimated';
 import Row from './Row'
-
+import ImagesCarousel from '../../components/ImagesCarousel';
 
 
 
@@ -20,26 +20,51 @@ export default (data,onPress) =>{
     let runtime = data?.movie?.runtime
     return (
        
-            <Animated.View 
-            style={{
-            // flex:1,
-            
-            padding : 10,
-            borderWidth : 1,
-            borderColor : '#012326',
-            borderRadius : 10,
-            marginVertical : 10,
+        <Animated.View 
+        style={{
+        // flex:1,
+        
+        
+        marginVertical : 10,
             
           
         }}
         entering={FadeInDown.duration(400).delay(1200)}
         >
-            <View
-            style={{
-                flex:1,
-                flexDirection : 'row'
-            }}
-            >
+        {data?.crew?.length > 0 &&
+        <>
+         <Text
+        style={{
+            fontSize :20,
+            fontWeight : 'bold',
+            color : '#012326',
+        }}
+        >
+            Crew
+        </Text>
+
+        <ImagesCarousel 
+        images={data?.crew}
+        />
+        </>
+       
+        }
+        <View
+        style={{
+        padding : 10,
+        borderWidth : 1,
+        borderColor : '#012326',
+        borderRadius : 10,
+        }}
+        >
+
+       
+        <View
+        style={{
+            flex:1,
+            flexDirection : 'row'
+        }}
+        >
 
             
              <View
@@ -114,7 +139,7 @@ export default (data,onPress) =>{
              />
 
        
-       
+            </View>
             
             </Animated.View >
            

@@ -24,6 +24,7 @@ import {
 import Entypo from '@expo/vector-icons/Entypo';
 import OverView from './OverView';
 import YoutubeViewer from '../../components/YoutubeViewer';
+import ImagesCarousel from '../../components/ImagesCarousel';
 
 const {width , height} = Dimensions.get('window')
 
@@ -42,6 +43,7 @@ export default ({ navigation ,route}) =>{
 
     const [movie,setMovie]= useState(null);
     const [trailer,setTrailer] = useState(null);
+    const [crew,setCrew] = useState([]);
     let isMarked = favourites.some(i =>i == id);
     const dispatch = useDispatch();
     let imageUrl = backdrop_path ? 
@@ -62,9 +64,13 @@ export default ({ navigation ,route}) =>{
             let video = res?.videos?.results
             .filter(m => m.site == 'YouTube')
             .find(m => m.type == 'Trailer') ??  res?.videos?.results[0];
-            
             setTrailer(video);
             console.log('official video',video)
+           };
+
+           if (res?.credits?.cast?.length){
+            let actors = res?.credits?.cast?.filter(c=>c.known_for_department == 'Acting' );
+            setCrew(actors); 
            }
            setTimeout(() => {
             dispatch(setLoading({loading : false}))  
@@ -75,7 +81,7 @@ export default ({ navigation ,route}) =>{
 
     
     
-    console.log(movie?.videos)
+    console.log(crew)
     
     
     return (
@@ -124,6 +130,8 @@ export default ({ navigation ,route}) =>{
         >
             {title}
         </Text>
+
+      
       
         
         { 
@@ -134,7 +142,8 @@ export default ({ navigation ,route}) =>{
             vote_average : vote_average,
             posterUrl  : posterUrl,
             isMarked: isMarked,
-            movie:movie
+            movie:movie,
+            crew:crew
          },
          ()=> {
             isMarked ? 
