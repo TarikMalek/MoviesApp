@@ -208,7 +208,7 @@ const styles = StyleSheet.create({
         flex:1,
         width : '100%',
         
-        backgroundColor : 'white',
+        backgroundColor : '#F2F2F2',
         marginTop : -25,
         borderTopLeftRadius : 20,
         borderTopRightRadius : 20,

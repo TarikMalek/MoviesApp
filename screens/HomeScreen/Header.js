@@ -14,36 +14,32 @@ export default ({
         container : {
             height : 150,
             width : width,
-            //  borderWidth :1,
-            //  borderColor :'#DDDD',
              borderRadius : 10,
              justifyContent : 'center',
             backgroundColor : '#012326',
-            },
+        },
+        weatherContainer : {
+            flexDirection : 'row',
+            width : '95%',
+            justifyContent : 'space-between',
+            alignSelf : 'center',
+            padding : 10,
+            alignItems : 'center'
+        },
     });
 
     return (
-        <View>
-
+      
         <View 
         style={styles.container}
         >
            
             {(weather) &&
             <View
-            style={{
-                flexDirection : 'row',
-                width : '95%',
-                justifyContent : 'space-between',
-                alignSelf : 'center',
-                padding : 10,
-                alignItems : 'center'
-            }}
+            style={styles.weatherContainer}
             >
             <View
-            style={{
-                alignItems :'center'
-            }}
+            style={{ alignItems :'center' }}
             >
             <WeatherAnimation />
             
@@ -88,13 +84,13 @@ export default ({
         
                 
             }
+
             <SearchField />
            
         </View>
 
        
        
-        </View>
     )
     
 };

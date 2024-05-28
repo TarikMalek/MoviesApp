@@ -3,7 +3,8 @@ import {
     View,
     Text,
     Dimensions , 
-    StyleSheet
+    StyleSheet,
+    TouchableOpacity
 } from 'react-native';
 import TextInput from './TextInput';
 import { useSelector,useDispatch } from 'react-redux';
@@ -14,7 +15,8 @@ import {
     setMoviesList,
     setFilters
 } from '../store/actions/MoviesListAction';
-
+import { Ionicons } from '@expo/vector-icons';
+const {width,height} = Dimensions.get('window');
 export default ({})=>{
     const [value,setValue]= useState('');
     const dispatch = useDispatch();
@@ -56,14 +58,36 @@ export default ({})=>{
     };
 
     return (
-        <View>
+        <View
+        style={{ width : '100%',backgroundColor : '#012326'}}
+        >
+
+         <View
+            style={{
+                flexDirection : 'row',
+                alignItems : 'center',
+                justifyContent : 'space-between',
+                width : '95%',
+                paddingHorizontal : 10,
+                
+            }}
+         >
+            
         <TextInput 
         value={value}
         onChange={onTextChange}
         placeholder={'Search Movies...'}
-
+         containerStyle={{ width : '80%' }}
         />
-       
+        <TouchableOpacity
+        onPress={()=>{
+
+        }}
+        >
+            <Ionicons name="filter" size={35} color="white" />
+        </TouchableOpacity>
+        
+        </View>   
         </View>
     )
 }

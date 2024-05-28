@@ -11,7 +11,9 @@ export default ({ images }) => {
                 <Image source={{ uri: source }} style={styles.image} /> :
                 <Image source={require('../assets/person.png')} style={styles.image} />
      return  (   
-     <View style={styles.itemContainer}>
+     <View style={styles.itemContainer
+
+     }>
         <View style={styles.imageContainer}>
          {image}
         </View>
@@ -21,7 +23,6 @@ export default ({ images }) => {
             width : '75%',
             height : 50,
             alignItems : 'center',
-            justifyContent : 'center',
         }}
         >
           <Text style={styles.name}>{item?.name}</Text>
@@ -44,11 +45,9 @@ export default ({ images }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    // paddingVertical: 10,
-    // marginVertical :5,
-  },
+ 
   itemContainer :{
+    width : 130,
     alignItems : 'center',
     justifyContent : 'center',
   },
