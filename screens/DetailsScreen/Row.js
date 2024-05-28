@@ -32,7 +32,7 @@ export default (data)=>{
                 fontWeight : 'bold',
             }}
             >
-                {data.label}
+                {data?.label}
             </Text>
 
             <Text
@@ -41,7 +41,7 @@ export default (data)=>{
                 color : '#012326'
             }}
             >
-                {data.value}
+                {data?.value}
             </Text>
 
         </View>

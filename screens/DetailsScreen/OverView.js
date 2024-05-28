@@ -17,6 +17,7 @@ import Row from './Row'
 
 
 export default (data,onPress) =>{
+    let runtime = data?.movie?.runtime
     return (
        
             <Animated.View 
@@ -92,9 +93,15 @@ export default (data,onPress) =>{
             </Text>
 
             {Row({label:'Release Date',value:data.releaseDate})}
-            {Row({label:'Rating',value:data.vote_average.toFixed(2)})}
-
+            {Row({label:'Rating',value:data?.vote_average.toFixed(2)})}
             
+            {(runtime && runtime > 0) ?
+            Row({label:'Runtime',value:runtime.toString()+' minutes'})
+            :
+            null
+            }
+
+           
             </View>
             </View>
 
@@ -105,6 +112,7 @@ export default (data,onPress) =>{
                 backgroundColor : data.isMarked ? 'red' : '#012326',
             }}
              />
+
        
        
             

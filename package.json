@@ -41,6 +41,7 @@
     "react-native-screens": "^3.31.1",
     "react-native-shared-element": "^0.8.9",
     "react-native-svg": "^15.2.0",
+    "react-native-webview": "^13.10.2",
     "react-native-youtube-iframe": "^2.3.0",
     "react-redux": "^9.1.2",
     "redux": "^5.0.1",

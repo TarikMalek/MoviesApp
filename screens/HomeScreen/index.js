@@ -65,7 +65,6 @@ export default ()=> {
 
     getMovieGenres()
     .then(res=>{
-      console.log(res)
       dispatch(setGenres(res?.genres))
     })
     .catch(err=>console.log('genres error',err));

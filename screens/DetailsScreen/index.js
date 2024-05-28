@@ -23,6 +23,7 @@ import {
 } from '../../store/actions/MoviesListAction';
 import Entypo from '@expo/vector-icons/Entypo';
 import OverView from './OverView';
+import YoutubeViewer from '../../components/YoutubeViewer';
 
 const {width , height} = Dimensions.get('window')
 
@@ -40,6 +41,7 @@ export default ({ navigation ,route}) =>{
     } = route.params;
 
     const [movie,setMovie]= useState(null);
+    const [trailer,setTrailer] = useState(null);
     let isMarked = favourites.some(i =>i == id);
     const dispatch = useDispatch();
     let imageUrl = backdrop_path ? 
@@ -56,6 +58,14 @@ export default ({ navigation ,route}) =>{
         getMovieDetails(id)
         .then(res=>{
            setMovie(res);
+           if (res?.videos?.results.length) {
+            let video = res?.videos?.results
+            .filter(m => m.site == 'YouTube')
+            .find(m => m.type == 'Trailer') ??  res?.videos?.results[0];
+            
+            setTrailer(video);
+            console.log('official video',video)
+           }
            setTimeout(() => {
             dispatch(setLoading({loading : false}))  
         }, 800); 
@@ -65,20 +75,34 @@ export default ({ navigation ,route}) =>{
 
     
     
-    console.log(movie)
+    console.log(movie?.videos)
     
     
     return (
-    <ScrollView>
+    <ScrollView
+    
+    showsVerticalScrollIndicator={false}
+    >
       <Animated.View 
       style={styles.poster}
       entering={FadeInRight.duration(400).delay(1100)}
       >
+        {trailer ?
+        <View style={styles.poster}>
+
+     
+        <YoutubeViewer
+        videoId={trailer?.key}
+        />
+           </View>
+        :
         <Image
           source={{ uri: imageUrl}}
           style={styles.poster}
          
         />
+        }
+        
           {isMarked &&
             <View
             style={styles.favouriteIcon}
@@ -109,7 +133,8 @@ export default ({ navigation ,route}) =>{
             releaseDate : releaseDate,
             vote_average : vote_average,
             posterUrl  : posterUrl,
-            isMarked: isMarked
+            isMarked: isMarked,
+            movie:movie
          },
          ()=> {
             isMarked ? 
@@ -120,6 +145,11 @@ export default ({ navigation ,route}) =>{
          }
         
 
+        <View 
+             style={{
+                height : height *.1
+             }}
+             />
       </View>
 
       
