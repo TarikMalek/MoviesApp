@@ -13,19 +13,16 @@ import {
     setLoading,
     setTotalPages,
     setMoviesList,
-    setFilters
+    setFilters,
+    showBottomsheet
 } from '../store/actions/MoviesListAction';
 import { Ionicons } from '@expo/vector-icons';
+import constants from '../constants';
 const {width,height} = Dimensions.get('window');
-export default ({})=>{
+export default ({showFilter})=>{
     const [value,setValue]= useState('');
     const dispatch = useDispatch();
-    const {
-        loading,
-        currentPage,
-        totalPages,
-       
-        } = useSelector(state => state.movies);
+    const { currentPage } = useSelector(state => state.movies);
 
     const search = useCallback(async ()=>{
         dispatch(setLoading({loading : true})) 
@@ -59,7 +56,7 @@ export default ({})=>{
 
     return (
         <View
-        style={{ width : '100%',backgroundColor : '#012326'}}
+        style={{ width : '100%',backgroundColor :constants.colors.primary}}
         >
 
          <View
@@ -81,7 +78,10 @@ export default ({})=>{
         />
         <TouchableOpacity
         onPress={()=>{
-
+            dispatch(showBottomsheet({
+                showBottomSheet : true,
+                type : 'filter',
+            }))
         }}
         >
             <Ionicons name="filter" size={35} color="white" />

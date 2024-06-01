@@ -13,7 +13,7 @@ import Animated,
     FadeInDown,
 } from 'react-native-reanimated';
 import { Dimensions } from 'react-native';
-
+import constants from '../../constants';
 
 const {width , height} = Dimensions.get('window')
 
@@ -38,7 +38,7 @@ export default (data)=>{
             <Text
             style={{
                 fontWeight : 'bold',
-                color : '#012326'
+                color : constants.colors.primary
             }}
             >
                 {data?.value}

@@ -12,21 +12,27 @@ import Navigator from './navigation/RootNavigator';
 import { Provider, connect } from 'react-redux';
 import { store } from './store/store';
 import AnimatedLoadingOverlay from './components/AnimatedLoadingOverlay';
-import BottomSheetModal from './components/BottomSheetModal'
-const Root = ({ loading ,showBottomSheet}) => {
+import BottomSheetModal from './components/BottomSheetModal';
+import constants from './constants';
+const Root = ({ 
+  loading ,
+  
+}) => {
   return( 
   <>
     {loading && <AnimatedLoadingOverlay />}
     
+    
     <Navigator />
-    {/* {showBottomSheet && <BottomSheetModal />} */}
+
+     <BottomSheetModal/>
   </>
   );
 };
 
 const mapStateToProps = (state) => ({
   loading: state.movies.loading,
-  showBottomSheet : state.movies.showBottomSheet
+  
 });
 
 const ConnectedRoot = connect(mapStateToProps)(Root);
@@ -36,7 +42,7 @@ const AppContainer = () => {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      background: '#012326',
+      background: constants.colors.primary,
     },
   };
 
@@ -52,10 +58,5 @@ const AppContainer = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#012326',
-  },
-});
 
 export default AppContainer;

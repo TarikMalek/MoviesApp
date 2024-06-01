@@ -18,7 +18,7 @@ import {
 } from '../../store/actions/MoviesListAction';
 import Header from './Header';
 import FloatingActionButton from '../../components/FAB';
-
+import constants from '../../constants'
 const { width, height } = Dimensions.get('window');
 
 export default () => {
@@ -188,7 +188,7 @@ export default () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#012326',
+    backgroundColor:constants.colors.primary,
     paddingTop: 150, // to offset the header height
   },
   header: {
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     height: 150,
-    backgroundColor: '#012326',
+    backgroundColor: constants.colors.primary,
     justifyContent: 'center',
     alignItems: 'center',
     zIndex: 1,

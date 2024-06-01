@@ -13,7 +13,7 @@ import Animated,
 } from 'react-native-reanimated';
 import Row from './Row'
 import ImagesCarousel from '../../components/ImagesCarousel';
-
+import constants from '../../constants';
 
 
 export default (data,onPress) =>{
@@ -37,7 +37,7 @@ export default (data,onPress) =>{
         style={{
             fontSize :16,
             fontWeight : 'bold',
-            color : '#012326',
+            color :constants.colors.primary,
         }}
         >
             Crew
@@ -53,7 +53,7 @@ export default (data,onPress) =>{
         style={{
         padding : 10,
         borderWidth : 1,
-        borderColor : '#012326',
+        borderColor :constants.colors.primary,
         borderRadius : 10,
         }}
         >
@@ -72,13 +72,12 @@ export default (data,onPress) =>{
                 width : '40%',
                 marginTop:5,
                 height : 200,
-                backgroundColor : '#012326',
+                backgroundColor : constants.colors.primary,
                 borderRadius : 20,
-                borderWidth :1 ,
-                borderColor : '#012326',
+                
                 alignItems : 'center',
                 justifyContent : 'center',
-                shadowColor: '#012326',
+                shadowColor:constants.colors.primary,
                 shadowOffset: {width: -2, height: 4},
                 shadowOpacity: 0.2,
                 shadowRadius: 3,
@@ -134,7 +133,7 @@ export default (data,onPress) =>{
             label={data.isMarked ?'Remove From Favourites' : 'Add to Favourites'}
             onPress={onPress}
             containerStyle={{
-                backgroundColor : data.isMarked ? 'red' : '#012326',
+                backgroundColor : data.isMarked ? 'red' :constants.colors.primary,
             }}
              />
 

@@ -6,7 +6,7 @@ import HomeScreen from '../screens/HomeScreen';
 import DetailsScreen from '../screens/DetailsScreen';
 import FavouritesScreen from '../screens/FavouritesScreen';
 import BottomTabs from './BottomTabs';
-
+import constants from '../constants';
 const Stack = createNativeStackNavigator();
 
  const Navigator = () => {
@@ -14,7 +14,7 @@ const Stack = createNativeStackNavigator();
       <Stack.Navigator
       screenOptions={{
         headerStyle: {
-          backgroundColor:'#012326', 
+          backgroundColor:constants.colors.primary, 
         },
         
         

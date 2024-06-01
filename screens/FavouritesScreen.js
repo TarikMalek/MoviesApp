@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View,ScrollView,Dimensions,FlatList } from 'react-native';
 import MovieListItem from '../components/MovieListItem';
 import { useSelector,useDispatch } from 'react-redux';
-
+import constants from '../constants';
 const {width,height} = Dimensions.get('window');
 
 export default ()=> {
@@ -49,7 +49,7 @@ export default ()=> {
 }
 const styles = StyleSheet.create({
     container: {
-        backgroundColor :'#012326',
+        backgroundColor :constants.colors.primary,
       
       },
       

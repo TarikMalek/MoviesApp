@@ -3,7 +3,7 @@ import { StyleSheet, Text, View,ScrollView,Dimensions,FlatList } from 'react-nat
 
 import WeatherAnimation from '../../components/WeatherAnimation';
 import SearchField from '../../components/SearchField';
-
+import constants from '../../constants';
 
 export default ({
     weather,
@@ -16,7 +16,7 @@ export default ({
             width : width,
              borderRadius : 10,
              justifyContent : 'center',
-            backgroundColor : '#012326',
+            backgroundColor : constants.colors.primary,
         },
         weatherContainer : {
             flexDirection : 'row',

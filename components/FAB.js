@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'; // Import appropriate icon library
-
+import constants from '../constants';
 const FloatingActionButton = ({ onPress }) => {
   const scale = useRef(new Animated.Value(1)).current;
 
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   button: {
-    backgroundColor: '#017126',
+    backgroundColor: constants.colors.secondary,
     width: 56,
     height: 56,
     justifyContent: 'center',

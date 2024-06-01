@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, FlatList, Image, StyleSheet,Text } from 'react-native';
-
+import constants from '../constants';
 export default ({ images }) => {
     
   const renderItem = ({ item }) => {
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
     borderRadius: 10,
     marginVertical :5,
-    shadowColor: '#012326',
+    shadowColor: constants.colors.primary,
     shadowOffset: {width: -2, height: 4},
     shadowOpacity: 0.2,
     shadowRadius: 3,
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   name : {
     fontSize :12,
     fontWeight :'bold',
-    color : '#012326'
+    color : constants.colors.primary
   }
 });
 

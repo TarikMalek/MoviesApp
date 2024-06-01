@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
 import FavouritesScreen from '../screens/FavouritesScreen';
 import Entypo from '@expo/vector-icons/Entypo';
-
+import constants from '../constants'
 const Tab = createBottomTabNavigator();
 
 export default ()=> {
@@ -10,14 +10,14 @@ export default ()=> {
     <Tab.Navigator
     screenOptions={{
         headerStyle: {
-          backgroundColor:'#012326', 
+          backgroundColor:constants.colors.primary, 
         },
         headerTintColor: '#fff', 
         headerTitleStyle: {
           fontWeight: 'bold',
         },
         tabBarStyle: {
-          backgroundColor: '#012326',
+          backgroundColor:constants.colors.primary,
         },
         tabBarActiveTintColor: '#FFD700',
         tabBarInactiveTintColor: '#888', 

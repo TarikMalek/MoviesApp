@@ -25,7 +25,7 @@ import {
 import {Entypo,AntDesign} from '@expo/vector-icons';
 import OverView from './OverView';
 import YoutubeViewer from '../../components/YoutubeViewer';
-
+import constants from '../../constants';
 const {width , height} = Dimensions.get('window')
 
 
@@ -119,7 +119,7 @@ export default ({ navigation ,route}) =>{
             style={styles.playVideoIcon}
             onPress={(()=>setPlayVideo(true))}
             >
-               <Entypo name="controller-play" size={50}  color='#012326' />
+               <Entypo name="controller-play" size={50}  color={constants.colors.primary}/>
 
            </TouchableOpacity>
             }
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
     title : {
         fontSize :20,
         fontWeight : 'bold',
-        color : '#012326',
+        color : constants.colors.primary,
         marginVertical : 10
     },
     poster : {

@@ -5,7 +5,7 @@ import {
     TouchableOpacity,
     StyleSheet
 } from 'react-native';
-
+import constants from '../constants';
 
 export default ( {
     label ,
@@ -27,13 +27,13 @@ export default ( {
 
 const styles=StyleSheet.create({
     button : {
-        backgroundColor : '#012326',
+        backgroundColor :constants.colors.primary,
         padding : 10,
         borderRadius : 10,
         marginVertical : 20,
         alignItems : 'center',
         justifyContent : 'center',
-        shadowColor: '#012326',
+        shadowColor:constants.colors.primary,
         shadowOffset: {width: -2, height: 4},
         shadowOpacity: 0.2,
         shadowRadius: 3,

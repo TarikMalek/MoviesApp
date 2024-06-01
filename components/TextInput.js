@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, TextInput} from 'react-native';
-
+import constants from '../constants';
 export default Input = ({
     value,
     onChange,
@@ -29,7 +29,7 @@ export default Input = ({
 const styles = StyleSheet.create({
   container : {
     padding: 10,
-    backgroundColor : '#012326'
+    backgroundColor :constants.colors.primary
   },
   input: {
     height: 40,
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     backgroundColor :'white',
     borderRadius : 10,
     padding : 10,
-    backgroundColor : '#012326',
+    backgroundColor : constants.colors.primary,
     borderColor : 'white',
     color : 'white'
 

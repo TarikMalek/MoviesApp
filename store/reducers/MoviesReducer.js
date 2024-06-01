@@ -28,7 +28,8 @@ const initialState = {
     totalPages : 0,
     location : null,
     weather : null,
-    showBottomSheet : true,
+    showBottomSheet : false,
+    bottomSheetData : '',
 };
 
 
@@ -40,6 +41,15 @@ const moviesReducer = (state= initialState,action) => {
             ...state,
             genres: action.payload
         };
+    case SET_SHOW_BOTTOMSHEET:
+        return {
+            ...state,
+            showBottomSheet: action.payload.showBottomSheet,
+            bottomSheetData : action.payload.type,
+        };
+    
+
+        
         
     case SET_WEATHER_DATA:
         return {
