@@ -29,7 +29,7 @@ Follow these steps to set up the project:
     eas build --platform ios --profile development-simulator # For iOS
     ```
 
-3. **Add APIs in `.env` file at the root level of the project**:
+3. **Add API keys in `.env` file at the root level of the project**:
     ```env
     EXPO_PUBLIC_weatherApi=*******
     EXPO_PUBLIC_moviesApi=*******
