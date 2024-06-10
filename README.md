@@ -43,9 +43,15 @@ Follow these steps to set up the project:
 
 ## Features
 
-.Sticky Header with dynamic visibility that changes on scroll .
-.Dynamic bottom sheet to control filters .
-.Infinite scroll .
-.Lottie Animations .
-.Animated layouts .
-.Weather data based on your location .
+- **Sticky Header with Dynamic Visibility**: The header's visibility changes based on the scroll position, enhancing user experience by keeping important navigation elements in view.
+
+- **Dynamic Bottom Sheet to Control Filters**: An interactive bottom sheet that allows users to apply various filters dynamically.
+
+- **Infinite Scroll**: Automatically loads more content as the user scrolls down, providing a seamless browsing experience.
+
+- **Lottie Animations**: Adds high-quality, engaging animations to the app using Lottie.
+
+- **Animated Layouts**: Smooth transitions and animations for different UI components and layouts.
+
+- **Weather Data Based on Your Location**: Provides real-time weather data by accessing the user's location.
+
