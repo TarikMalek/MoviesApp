@@ -41,4 +41,11 @@ Follow these steps to set up the project:
     ```
     Then open your preferred simulator and enjoy 😊
 
+## Features
 
+.Sticky Header with dynamic visibility that changes on scroll .
+.Dynamic bottom sheet to control filters .
+.Infinite scroll .
+.Lottie Animations .
+.Animated layouts .
+.Weather data based on your location .
