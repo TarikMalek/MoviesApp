@@ -31,8 +31,8 @@ Follow these steps to set up the project:
 
 3. **Add API keys in `.env` file at the root level of the project**:
     ```env
-    EXPO_PUBLIC_weatherApi=*******
-    EXPO_PUBLIC_moviesApi=*******
+    EXPO_PUBLIC_weatherApi=******* # create an account and add your token weatherapi.com
+    EXPO_PUBLIC_moviesApi=*******   # create an account and add your token https://developer.themoviedb.org/
     ```
 
 4. **Run the server**:
