@@ -25,7 +25,7 @@ Follow these steps to set up the project:
 
 2. **Login to your expo account and Create Expo development build**:
     ```sh
-    eas build --platform android --profile deveopment # For Android
+    eas build --platform android --profile development # For Android
     eas build --platform ios --profile development-simulator # For iOS
     ```
 
