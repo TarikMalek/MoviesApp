@@ -8,7 +8,7 @@ import constants from '../constants';
 export default () => {
   const bottomSheetRef = useRef(null);
   const [keyboardVisible, setKeyboardVisible] = useState(false);
-  const initialSnapPoints = ['25%', '50%', '75%'];
+  const initialSnapPoints = [ '50%', '75%'];
   const keyboardSnapPoints = ['50%', '75%'];
 
   const dispatch = useDispatch();
@@ -37,8 +37,9 @@ export default () => {
     return () => {
       keyboardDidShowListener.remove();
       keyboardDidHideListener.remove();
-      bottomSheetRef?.current?.snapToIndex(0);
       bottomSheetRef?.current?.close();
+      bottomSheetRef?.current?.snapToPosition(0);
+     
     };
   }, [showBottomSheet]);
 
@@ -83,7 +84,7 @@ export default () => {
         enablePanDownToClose={true}
         handleStyle={styles.handleStyle}
         backgroundStyle={styles.bottomSheetBackground}
-
+        keyboardBehavior="fillParent"
       >
         <View
         style={styles.contentContainer}

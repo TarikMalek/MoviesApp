@@ -95,6 +95,7 @@ export default () => {
       .then(res => {
         dispatch(setMoviesList({ movies: res?.results, reset: false }));
         dispatch(setTotalPages({ totalPages: res.total_pages }));
+        
         setTimeout(() => {
           dispatch(setLoading({ loading: false }));
         }, 1000);
@@ -123,17 +124,22 @@ export default () => {
           currentPage: currentPage,
           searchQuery: searchQuery
         } 
-        : currentPage
+        : currentPage,filters.genre
       )
       .then(res => {
-        dispatch(setMoviesList({ movies: res?.results, reset: false }));
+        dispatch(setMoviesList({ 
+          movies: res?.results,
+          reset: (filters?.genre?.length && currentPage == 1 ) ? true :false ,
+        }));
+        dispatch(setTotalPages({ totalPages: res?.total_pages }));
+        currentPage == 1 && flatListRef.current.scrollToOffset({ offset: 0, animated: true });
         setTimeout(() => {
           dispatch(setLoading({ loading: false }));
         }, 1000);
       })
       .catch(err => console.log('error', err));
     }
-  }, [currentPage]);
+  }, [currentPage,filters?.genre]);
 
   useEffect(() => {
     if (location) {

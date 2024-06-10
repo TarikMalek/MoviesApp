@@ -13,7 +13,7 @@ import {
     setLoading,
     setTotalPages,
     setMoviesList,
-    setFilters,
+    addFilters,
     showBottomsheet
 } from '../store/actions/MoviesListAction';
 import { Ionicons } from '@expo/vector-icons';
@@ -49,7 +49,7 @@ export default ({showFilter})=>{
         setValue(val);
 
         if (val.length %3 == 0){
-            dispatch(setFilters({search : val}))
+            dispatch(addFilters({type : "search" , value: val}))
             search()
         };
     };

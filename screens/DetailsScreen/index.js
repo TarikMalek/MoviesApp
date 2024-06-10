@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
     },
     closeVideoIcon : {
         position : 'absolute',
-        top : 0,
+        top : 5,
         right : 0,
         alignItems : 'center',
         justifyContent : 'center',

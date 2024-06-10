@@ -1,6 +1,6 @@
 import { current } from '@reduxjs/toolkit';
 import {
-    SET_FILTERS,
+    ADD_FILTERS,
     SET_LOADING,
     SET_MOVIES_LIST,
     REMOVE_FROM_FAVOURITES,
@@ -19,7 +19,7 @@ const initialState = {
     genres : [],
     moviesList: [],
     filters: {
-        genre: '',
+        genre: [],
         sortBy: '',
         search: ''
     },
@@ -91,13 +91,25 @@ const moviesReducer = (state= initialState,action) => {
             ]
         };
 
-      case SET_FILTERS:
+      case ADD_FILTERS:
         return {
             ...state,
             filters:{
                 ...state.filters,
-                ...action.payload
-            }
+                search : action.payload.type == 'search' ? 
+                        action.payload.value :
+                        '',
+                genre : action.payload.type == 'genre' ?
+                        (state.filters.genre.includes(action.payload.value) ?
+                        state.filters.genre.filter(g=> g != action.payload.value)
+                        :
+                        [...state.filters.genre,action.payload.value]
+                        )
+                        :
+                        [],
+           
+            },
+            currentPage  :1,
         };
 
       case ADD_TO_FAVOURITES:
