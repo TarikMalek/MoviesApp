@@ -14,11 +14,31 @@
 - grohom/bottomsheet
 - react navigation 
 
-<h2 style="color: blue;">Install & Run..</h2>
-1- clone .. 
-2- create expo development build 
-3- add apis in .env file at the root level of the project as follows : 
-EXPO_PUBLIC_weatherApi= *******
-EXPO_PUBLIC_moviesApi = *******
-4- run npx expo to start the server then open your preferred simulator and enjoy 😊 
+## Getting Started
+
+Follow these steps to set up the project:
+
+1. **Clone the repository**:
+    ```sh
+    git clone https://github.com/TarikMalek/MoviesApp.git
+    ```
+
+2. **Create Expo development build**:
+    ```sh
+    npx expo run:android # For Android
+    npx expo run:ios # For iOS
+    ```
+
+3. **Add APIs in `.env` file at the root level of the project**:
+    ```env
+    EXPO_PUBLIC_weatherApi=*******
+    EXPO_PUBLIC_moviesApi=*******
+    ```
+
+4. **Run the server**:
+    ```sh
+    npx expo start
+    ```
+    Then open your preferred simulator and enjoy 😊
+
 
