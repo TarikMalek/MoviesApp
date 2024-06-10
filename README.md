@@ -23,10 +23,10 @@ Follow these steps to set up the project:
     git clone https://github.com/TarikMalek/MoviesApp.git
     ```
 
-2. **Create Expo development build**:
+2. **Login to your expo account and Create Expo development build**:
     ```sh
-    npx expo run:android # For Android
-    npx expo run:ios # For iOS
+    eas build --platform android --profile deveopment # For Android
+    eas build --platform ios --profile development-simulator # For iOS
     ```
 
 3. **Add APIs in `.env` file at the root level of the project**:
